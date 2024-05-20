@@ -53,6 +53,9 @@ const ContextProviderURLShortenerWebApp = ({children}) =>{
     'delete-a-document-created-by-this-current-user': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/delete-a-document-created-by-this-current-user"
   };
 
+  // testing
+  apiEndPointUrls = apiEndPointUrlsLocalhost;
+
   let initialAppState = localStorage.getItem('Alex21CURLShortenerApp');
   if(initialAppState){
     initialAppState = JSON.parse(initialAppState);

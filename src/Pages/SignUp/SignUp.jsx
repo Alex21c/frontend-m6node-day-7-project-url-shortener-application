@@ -8,6 +8,9 @@ import { useState } from "react";
 import { useContext } from "react";
 import Navbar from "../../Components/NavBar/Navbar";
 import { paste } from "@testing-library/user-event/dist/paste";
+import validator from "validator";
+
+
 // let email='customer@alex21c.com';
 // let password='customer123$';
 
@@ -35,6 +38,12 @@ export default function SignUp(){
         showError(updateStateSuccessAndErrorMsg, "kindly verify yours password, it doesn't matched with yours retyped password!");
         return;
       }
+    // is it valid email
+      if(!validator.isEmail(refEmail.current.value)){
+        showError(updateStateSuccessAndErrorMsg, "Invalid Email Address !");
+        return;        
+      }
+
 
       validateSignUpRequest({
         firstName: refFirstName.current.value,
@@ -88,7 +97,7 @@ export default function SignUp(){
       
     } catch (error) {      
       console.log(error.message);
-      showError(updateStateSuccessAndErrorMsg, 'Failed to Sign In');
+      showError(updateStateSuccessAndErrorMsg, 'Failed to Sign Up');
     }
 
   }

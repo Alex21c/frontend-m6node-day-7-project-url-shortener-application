@@ -96,7 +96,7 @@ export default function Treasure(){
                 stateShortedURL ?
                 <div className="flex  flex-col gap-[.5rem] w-[30rem]">
                   <div className="flex gap-[.5rem]">
-                    <textarea readOnly value={stateShortedURL} type="text" placeholder="ShortedURL" className=" text-stone-700 transition focus:outline focus:outline-2 focus:outline-green-500 p-[1rem] pr-[3rem] rounded-md bg-stone-300 relative w-[100%] h-[4rem]" name='shortedURL'>
+                    <textarea readOnly value={stateShortedURL} type="text" placeholder="ShortedURL" className=" text-stone-700 transition focus:outline focus:outline-2 focus:outline-green-500 p-[1rem] pr-[3rem] rounded-md bg-stone-300 relative w-[100%] h-[6rem]" name='shortedURL'>
                       
                     </textarea>
                     <button onClick={copyTextToClipboard} className="select-none wrapperGeneratePassword flex gap-[1rem] items-center justify-center outline outline-2 outline-amber-50  hover:bg-yellow-400 transition cursor-pointer px-[1rem] py-[.5rem] rounded-md hover:text-white text-slate-900    text-[2rem]  bg-yellow-300 ">        

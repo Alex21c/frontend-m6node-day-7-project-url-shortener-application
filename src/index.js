@@ -8,6 +8,7 @@ import Treasure from './Pages/Treasure/Treasure';
 import NotFound from './Pages/NotFound/NotFound';
 import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
+import MyUrls from './Pages/MyUrls/MyUrls';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
   {
     path: "/sign-up",
     element: <SignUp/>,
+    errorElement: <NotFound/>
+  },
+  {
+    path: "/my-urls",
+    element: <MyUrls/>,
     errorElement: <NotFound/>
   }
 ]);

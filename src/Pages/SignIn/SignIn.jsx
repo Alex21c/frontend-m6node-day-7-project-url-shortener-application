@@ -88,15 +88,11 @@ export default function SignIn(){
 
 
   useEffect(()=>{
-
+    document.title="Sign In";
     hideError(updateStateSuccessAndErrorMsg);
     // testing();
   },[]);
 
-  useEffect(()=>{
-    document.title="Sign In";
-    
-  },[]);
 
   return (
     <div className="pageWrapper mt-[2rem] pt-[1rem] border-0 border-slate-200 p-[2rem] max-w-[120rem]  m-auto rounded-md  text-[1.2rem] text-stone-200 ">

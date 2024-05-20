@@ -22,12 +22,20 @@ export default function Navbar(){
 
   ////console.log(stateWhoIsCurrentPage);
   return (
-    <nav id='primaryNav' className={`relative max-[990px]:bg-gradient-to-br  p-[2rem] flex gap-[1.5rem] justify-center text-blue-300 rounded-md items-center mb-[1rem] mt-[0]`}>
+    <nav id='primaryNav' className={`relative max-[990px]:bg-gradient-to-br  p-[2rem] flex gap-[1.5rem] justify-center text-blue-300 rounded-md items-center  mt-[0]`}>
       <h2 className='displayNone'>Primary Header Navigation</h2>
       <Link to="/" className='hover:text-white transition font-medium flex gap-[.2rem] items-center'>
         <i className="fa-solid fa-house text-[2.5rem]"></i>
         <span className={`${stateWhoIsCurrentPage === 'Homepage' ? "underline" : "" }`}>Home</span>
       </Link>
+      {
+        stateContextURLShortenerApp?.['auth-token'] && 
+        <Link to="/my-urls" className='hover:text-white transition font-medium flex gap-[.2rem] items-center'>
+          <i className="fa-solid fa-link  text-[2.5rem]"></i>
+          <span className={`${stateWhoIsCurrentPage === 'Homepage' ? "underline" : "" }`}>My URLs</span>
+        </Link>
+      }
+
       {
           !stateContextURLShortenerApp?.['auth-token']  ?
           // Link to={`/SignIn/${currentPageUrl}`} 

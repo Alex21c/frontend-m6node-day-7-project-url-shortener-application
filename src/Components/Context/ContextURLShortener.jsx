@@ -45,12 +45,12 @@ const ContextProviderURLShortenerWebApp = ({children}) =>{
     'delete-a-document-created-by-this-current-user': "http://localhost:4000/api/v1/delete-a-document-created-by-this-current-user"
   };
   let apiEndPointUrls = {
-    'sign-in': "https://m6node-day-7-project-url-shortener.onrender.com:4000/api/v1/user/sign-in",
-    'sign-up':"https://m6node-day-7-project-url-shortener.onrender.com:4000/api/v1/user/sign-up",
-    'validate-auth-token': "https://m6node-day-7-project-url-shortener.onrender.com:4000/api/v1/user/validate-auth-token",
-    'short-url': "https://m6node-day-7-project-url-shortener.onrender.com:4000/api/v1/short-url",
-    'get-all-urls-created-by-current-user': "https://m6node-day-7-project-url-shortener.onrender.com:4000/api/v1/get-all-urls-created-by-current-user",
-    'delete-a-document-created-by-this-current-user': "https://m6node-day-7-project-url-shortener.onrender.com:4000/api/v1/delete-a-document-created-by-this-current-user"
+    'sign-in': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/sign-in",
+    'sign-up':"https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/sign-up",
+    'validate-auth-token': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/validate-auth-token",
+    'short-url': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/short-url",
+    'get-all-urls-created-by-current-user': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/get-all-urls-created-by-current-user",
+    'delete-a-document-created-by-this-current-user': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/delete-a-document-created-by-this-current-user"
   };
 
   let initialAppState = localStorage.getItem('Alex21CURLShortenerApp');
@@ -106,7 +106,7 @@ const ContextProviderURLShortenerWebApp = ({children}) =>{
    
         }
         
-    }, [stateContextURLShortenerApp]);
+    }, [stateContextURLShortenerApp, apiEndPointUrls]);
 
  
   const contextValue = {

@@ -4,6 +4,9 @@
 ## Hosted Version of the Project:
 [URL Shortener Application ](https://frontend-m6node-day-7-project-url-shortener-application.vercel.app/)
 
+## BackEnd GitHub Repository Link
+[URL Shortener Application (Day 7 Project, Module #6, MERN Stack)](https://github.com/Alex21c/m6node-day-7-project-url-shortener-application)
+
 ## Overview:
 + In this assignment, i have developed a URL shortener application that takes long URLs as input and generates shorter, more manageable links.
 + The goal is to create a service that efficiently converts lengthy URLs into concise ones, making sharing and accessing links easier for users.

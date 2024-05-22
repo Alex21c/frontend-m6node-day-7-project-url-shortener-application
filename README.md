@@ -2,7 +2,7 @@
 ![](thumbnail.png)
 
 ## Hosted Version of the Project:
-[mlcToDoPrjName](https://frontend-m6node-day-7-project-url-shortener-application.vercel.app/)
+[URL Shortener Application ](https://frontend-m6node-day-7-project-url-shortener-application.vercel.app/)
 
 ## Overview:
 + In this assignment, i have developed a URL shortener application that takes long URLs as input and generates shorter, more manageable links.

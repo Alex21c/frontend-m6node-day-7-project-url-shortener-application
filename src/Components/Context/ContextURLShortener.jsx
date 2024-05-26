@@ -63,7 +63,7 @@ async function performHandshakeWithServer(apiEndPointUrls, setStateContextURLSho
     })
 
 
-  } catch (error) {
+  } catch (error) {    
     console.log("ERROR: " + error.message);
     console.log('unable to perform handshake with the server!');
   }

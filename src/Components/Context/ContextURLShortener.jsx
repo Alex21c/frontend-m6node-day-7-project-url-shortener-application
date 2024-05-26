@@ -34,9 +34,55 @@ async function isAuthTokenValid(authToken, apiEndPointUrls){
 
 }
 
+async function performHandshakeWithServer(apiEndPointUrls, setStateContextURLShortenerApp){
+  try {
+    console.log('performing handshake with server');
+    // throw new Error('testing')
+    let response = await fetch(apiEndPointUrls['handshake']);
+    if(!response){       
+      throw new Error("Unable to to process current request!");
+    }
+    response = await response.json();        
+    // console.log(response);
+    // save it into state   
+      const handshakeInfo= {
+        success: response.success,
+        timestamp: new Date()
+      };
+
+    // console.log(handshakeInfo);
+    setStateContextURLShortenerApp(previousState=>{
+      return {
+        ...previousState,
+        handshakeInfo: handshakeInfo 
+      }
+    })
+
+
+  } catch (error) {
+    console.log('unable to perform handshake with the server!');
+  }
+}
+
+function isTimeStamp10MinutesOlder(previousTimeStamp){
+  // console.log(previousTimeStamp);
+  previousTimeStamp = new Date(previousTimeStamp)
+  let currentTimestamp = new Date();
+  let tenMinues = 10*60*1000;
+  // let tenMinues = 1000;
+  let difference = currentTimestamp- previousTimeStamp;
+  // console.log(difference)
+  if(difference > tenMinues){
+    return true;
+  }else{
+    return false;
+  }
+
+}
 
 const ContextProviderURLShortenerWebApp = ({children}) =>{
   let apiEndPointUrlsLocalhost = {
+    'handshake': "http://localhost:4000/handshake/hello",
     'sign-in': "http://localhost:4000/api/v1/user/sign-in",
     'sign-up':"http://localhost:4000/api/v1/user/sign-up",
     'validate-auth-token': "http://localhost:4000/api/v1/user/validate-auth-token",
@@ -45,6 +91,7 @@ const ContextProviderURLShortenerWebApp = ({children}) =>{
     'delete-a-document-created-by-this-current-user': "http://localhost:4000/api/v1/delete-a-document-created-by-this-current-user"
   };
   let apiEndPointUrls = {
+    'handshake': "http://m6node-day-7-project-url-shortener.onrender.com/handshake/hello",
     'sign-in': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/sign-in",
     'sign-up':"https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/sign-up",
     'validate-auth-token': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/validate-auth-token",
@@ -60,7 +107,12 @@ const ContextProviderURLShortenerWebApp = ({children}) =>{
   if(initialAppState){
     initialAppState = JSON.parse(initialAppState);
   }else{
-    initialAppState = {};
+    initialAppState = {
+      handshakeInfo: {
+        success: false,
+        timestamp: new Date()
+      }
+    };
   }
   let [stateContextURLShortenerApp, setStateContextURLShortenerApp] = useState(initialAppState);
   let [stateWhoIsCurrentPage, updateStateWhoIsCurrentPage] = useState(null);
@@ -75,6 +127,42 @@ const ContextProviderURLShortenerWebApp = ({children}) =>{
     displayNone: 'displayNone'        
   
   });
+
+  // useEffect(()=>{
+  //   console.log(stateContextURLShortenerApp);
+  // }, [stateContextURLShortenerApp]);
+
+  useEffect(()=>{
+    // first check the local strogage about when was the last handshake performed
+    // if more than 10 minutes have been passed then re perform handshake
+      
+      const makeAsyncCall = async ()=>{
+        
+        await performHandshakeWithServer(apiEndPointUrls, setStateContextURLShortenerApp);
+      };
+    
+      let doIneedToPerformHandshake = false;
+      if(stateContextURLShortenerApp?.handshakeInfo){
+        // console.log(isTimeStamp10MinutesOlder(stateContextURLShortenerApp?.handshakeInfo?.timestamp))
+        // is it fresh or 10 minutes have been passed
+          if(isTimeStamp10MinutesOlder(stateContextURLShortenerApp?.handshakeInfo?.timestamp)){
+            doIneedToPerformHandshake=true;
+            // console.log('isTimeStamp10MinutesOlder')
+          }
+        // just check is last time there was failure response in handshake?
+          else if(stateContextURLShortenerApp.handshakeInfo.success === false){
+            doIneedToPerformHandshake=true;
+          }
+          
+      }
+  
+      if(doIneedToPerformHandshake){
+        makeAsyncCall();
+      }
+      
+      
+
+  }, []);
 
   // useEffect() can be used to initialize and update states here as well
     useEffect(()=>{

@@ -96,7 +96,7 @@ const ContextProviderURLShortenerWebApp = ({children}) =>{
     'delete-a-document-created-by-this-current-user': "http://localhost:4000/api/v1/delete-a-document-created-by-this-current-user"
   };
   let apiEndPointUrls = {
-    'handshake': "http://m6node-day-7-project-url-shortener.onrender.com/handshake/hello",
+    'handshake': "https://m6node-day-7-project-url-shortener.onrender.com/handshake/hello",
     'sign-in': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/sign-in",
     'sign-up':"https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/sign-up",
     'validate-auth-token': "https://m6node-day-7-project-url-shortener.onrender.com/api/v1/user/validate-auth-token",

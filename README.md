@@ -10,7 +10,7 @@
 ## Overview:
 + In this assignment, i have developed a URL shortener application that takes long URLs as input and generates shorter, more manageable links.
 + The goal is to create a service that efficiently converts lengthy URLs into concise ones, making sharing and accessing links easier for users.
-+ My implementation should include key features such as generating unique short codes, redirecting users to the original URL, and tracking usage analytics. 
++ My implementation include key features such as generating unique short codes, redirecting users to the original URL, and tracking usage analytics. 
 + Through this assignment, i have learnt development, database management, and algorithmic considerations to build a robust and user-friendly URL shortening service.
 
 ## Key features:

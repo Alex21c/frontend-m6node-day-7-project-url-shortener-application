@@ -38,7 +38,11 @@ async function performHandshakeWithServer(apiEndPointUrls, setStateContextURLSho
   try {
     console.log('performing handshake with server');
     // throw new Error('testing')
-    let response = await fetch(apiEndPointUrls['handshake']);
+      
+    const requestOptions = {
+      method: "GET"
+    };    
+    let response = await fetch(apiEndPointUrls['handshake'], requestOptions);
     if(!response){       
       throw new Error("Unable to to process current request!");
     }
@@ -60,6 +64,7 @@ async function performHandshakeWithServer(apiEndPointUrls, setStateContextURLSho
 
 
   } catch (error) {
+    console.log("ERROR: " + error.message);
     console.log('unable to perform handshake with the server!');
   }
 }

@@ -9,6 +9,11 @@ export default function Treasure(){
 
   let {stateContextURLShortenerApp, stateSuccessAndErrorMsg, updateStateSuccessAndErrorMsg, apiEndPointUrls} = useContext(ContextURLShortenerWebApp);
   const [open, setOpen] = useSetInitialStateSnackbar();
+  const [snackbarState, setSnackbarState] = useState({
+    msg: "Shortened URL Successfully Copied inside yours device clipboard!",
+    successOrError: "success"
+  });
+
   let [stateShortedURL, setStateShortedURL] = useState(null);
 
   useEffect(()=>{
@@ -77,7 +82,7 @@ export default function Treasure(){
 
   return (
     <div className="pageWrapper mt-[2rem] pt-[1rem] p-[2rem] max-w-[120rem]  m-auto rounded-md  text-[1.2rem] text-stone-200 flex flex-col gap-[2rem] items-center">
-      <SimpleSnackbar open={open} setOpen={setOpen}/>
+      <SimpleSnackbar open={open} setOpen={setOpen} snackbarState={snackbarState}/>
       <Navbar/>
       <h2 className='text-[1.8rem] flex flex-col gap-[.2rem] items-center mt-[-2rem]' >
           <i className="fa-solid fa-link text-[2.5rem] hover:text-yellow-300 transition"></i>
